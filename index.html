@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upgrading Node from Solidfire to HCI</title>
+    <style>
+        p {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            color: #555;
+        }
+        h1 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 30px;
+            color: #555;
+        }
+        h2 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 25px;
+            color: #555;
+        }
+        h3 {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            color: #555;
+        }
+        ol {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            color: #555;
+        }
+        li {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            color: #555;
+        }
+        
+    </style>
+</head>
+<body>
+    <p>Jaaziah Espinoza</p>
+    <p>DePaul University</p>
+    <p>Professor Aleshia Jefferson</p>
+    <p>November 18, 2023</p>
+
+    <h1>Upgrading Node from Solidfire to HCI</h1>
+    <p>Upgrading a node from SolidFire to HCI (Hyper-Converged Infrastructure) can provide numerous benefits. HCI integrates compute, storage, and networking into a single system, simplifying management and enabling better scalability. It also improves performance and efficiency by allowing workloads to share resources. SolidFire, while excellent for storage, doesn't offer these integrated capabilities. By upgrading to HCI, you can enjoy a more seamless, scalable, and efficient infrastructure, ideal for businesses seeking to modernize their IT environment. Use this document to upgrade a node from a Solidfire infrastructure to a Hyper-Converged Infrastructure (HCI).</p>
+
+    <div style="border: 2px solid red; padding: 10px; background-color: lightyellow;">
+        <h3 style="color: red;">Caution:</h3>
+        <p>If something goes wrong during the process of upgrading a node from SolidFire to HCI, there are several steps you should follow:</p>
+        <ol>
+            <li><b>Check the Logs:</b> Review the system logs for any error messages or warnings that might indicate what went wrong during the upgrade.</li>
+            <li><b>Check the Hardware:</b> Make sure all cables, wires, and components are properly connected and functioning. If any hardware was recently added or replaced, ensure it's compatible with your system.</li>
+            <li><b>Review the Steps:</b> Go back through the upgrade process to ensure all steps were completed in the correct order. Ensure that you've properly backed up data, confirmed the functionality of all disk drives, and correctly performed the 'take over' and 'give back' commands.</li>
+            <li><b>Consult Technical Documentation:</b> Refer to the technical documentation provided by your HCI provider. These documents often have troubleshooting guides that can help identify and resolve common problems.</li>
+            <li><b>Contact Support:</b> If you're unable to resolve the issue on your own, it may be time to contact your HCI provider's support team. They can provide expert assistance and guide you through the process of troubleshooting and resolving your issue.</li>
+        </ol>
+    </div>
+
+    <h2>About this task</h2>
+    <p>It is essential to input the commands on the correct node in the correct order.</p>
+    <li>The old node is the one that is getting replaced.</li>
+    <li>The upgrade node is the new node, replacing the old node.</li>
+    <li>The healthy node is the node assisting with the commands</li>
+    <li>You must always record the console's outputs to a text file for future troubleshooting throughout the procedure.</li>
+    <li>You can not replace any drives or disk shelves during the course.</li>
+    <li>The replacement node must be compatible with the current system.</li>
+
+    <h2>Preparing for Replacement</h2>
+    <p>You must review the prerequisites needed to complete this procedure:</p>
+    <li>Compatible Replacement Node</li>
+    <li>Network Access</li>
+    <li>Tools for Hardware Installation</li>
+    <li>Technical Documentation</li>
+
+    <h2>Workflow Diagram</h2>
+    <img src="workflow.png" alt="image of workflow diagram" style="width: 550px; height: 550px; border: 5px solid #555;">
+
+    <h2>Before You Begin</h2>
+    <p>Do the following:</p>
+    <ol>
+        <li>Backup storage for data on the old node</li>
+        <img src="command_line_1.png" alt="image of terminal" style="width: 650px; height: 80px; border: 5px solid #555;">
+        <li>Confirm all disk drives are fully functional</li>
+        <img src="command_line_2.png" alt="image of terminal" style="width: 650px; height: 80px; border: 5px solid #555;">
+        <li>Confirm that the healthy node is able to do the essential command of ‘take over’ and ‘give back’</li>
+        <img src="command_line_3.png" alt="image of terminal" style="width: 650px; height: 80px; border: 5px solid #555;">
+    </ol>
+    
+
+    <h2>Procedure: Upgrade Node</h2>
+    <p>Follow these steps to replace a node from SolidFire to HCI:</p>
+    <ol>
+        <li>Establish the node that needs replacing and ensure a compatible replacement node.</li>
+        <li>Backup all the data from the node being replaced to a safe backup storage.</li>
+        <li>Once <mark>Steps 1 and 2</mark> are confirmed, label all the cables and wires from the old node to re-input them in the same order into the new node in the future.</li>
+        <img src="cables.jpg" alt="image of terminal" style="width: 250px; height: 250px; border: 5px solid #555;">
+        <li>Plug the laptop into the old node to input console commands and observe. Check system health with the command below, then proceed.</li>
+        <img src="command_line_4.png" alt="image of terminal" style="width: 650px; height: 80px; border: 5px solid #555;">
+        <li>Enter the "Take" command to start reorganizing the data to other nodes in the cluster, safeguarding no data loss throughout the upgrade process.</li>
+        <img src="command_line_5.png" alt="image of terminal" style="width: 650px; height: 80px; border: 5px solid #555;">
+        <li>Observe the data reorganization process, and when it is done, the system shows the node is no longer involved within any of the clusters.</li>
+        <img src="command_line_6.png" alt="image of terminal" style="width: 650px; height: 80px; border: 5px solid #555;">
+        <li>Once <mark>Step 6</mark> is confirmed, turn off the old node, unplug all cables and wires and pull the node out completely.</li>
+        <img src="pull_out_node.png" alt="image of terminal" style="width: 650px; height: 250px; border: 5px solid #555;">
+        <li>Install the new node in the same place as the old one within the rack.</li>
+        <img src="push_in_node.png" alt="image of terminal" style="width: 650px; height: 250px; border: 5px solid #555;">
+        <li>Plug in correctly labeled cables and wires into the new node, then turn it on and double-check the new node is detectable on the network and working correctly.</li>
+        <img src="command_line_7.png" alt="image of terminal" style="width: 650px; height: 80px; border: 5px solid #555;">
+        <li>Enter the "Giveback" command to authorize the new node to start handling data again.</li>
+        <img src="command_line_8.png" alt="image of terminal" style="width: 650px; height: 80px; border: 5px solid #555;">
+        <li>Observe the data reorganization method up till the new node is wholly joined into one of the clusters.</li>
+        <img src="command_line_9.png" alt="image of terminal" style="width: 650px; height: 80px; border: 5px solid #555;">
+        <li>Authenticate the upgrade by checking system logs and making sure the new node is performing successfully.</li>
+        <img src="command_line_10.png" alt="image of terminal" style="width: 650px; height: 80px; border: 5px solid #555;">
+        <h3>Use this "Upgrading Node from Solidfire to HCI " instructional to complete a node replacement.</h3>
+
+</body>
+</html>
